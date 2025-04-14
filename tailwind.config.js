@@ -54,6 +54,16 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				wood: {
+					DEFAULT: '#4A90E2', // Medium blue
+					dark: '#2C5282', // Dark blue
+					light: '#EBF4FF' // Light blue
+				},
+				glass: {
+					DEFAULT: '#63B3ED', // Light blue
+					dark: '#3182CE', // Medium-dark blue
+					light: '#F0F9FF' // Very light blue 
 				}
 			},
 			borderRadius: {
