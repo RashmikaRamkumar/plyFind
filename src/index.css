@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,31 +7,31 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%; // Light blue-white background
-    --foreground: 225 15% 25%; // Dark blue-gray text
+    --background: 210 40% 98%; /* Light blue-white background */
+    --foreground: 225 15% 25%; /* Dark blue-gray text */
 
-    --card: 210 40% 99%; // Almost white card background
+    --card: 210 40% 99%; /* Almost white card background */
     --card-foreground: 225 15% 25%;
 
     --popover: 210 40% 99%;
     --popover-foreground: 225 15% 25%;
 
-    --primary: 210 80% 50%; // Bright blue
-    --primary-foreground: 0 0% 100%; // White text on primary
+    --primary: 210 80% 50%; /* Bright blue */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 210 40% 80%; // Soft blue
+    --secondary: 210 40% 80%; /* Soft blue */
     --secondary-foreground: 225 15% 25%;
 
-    --muted: 210 40% 96%; // Very light blue-gray
+    --muted: 210 40% 96%; /* Very light blue-gray */
     --muted-foreground: 225 10% 40%;
 
-    --accent: 210 50% 90%; // Pale blue
+    --accent: 210 50% 90%; /* Pale blue */
     --accent-foreground: 225 15% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 30% 85%; // Light blue border
+    --border: 210 30% 85%; /* Light blue border */
     --input: 210 30% 85%;
     --ring: 210 80% 50%;
 
