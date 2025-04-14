@@ -1,37 +1,38 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Basic:wght@400;700&display=swap');
+
 @layer base {
   :root {
-    --background: 33 25% 97%;
-    --foreground: 37 10% 22%;
+    --background: 210 40% 98%; // Light blue-white background
+    --foreground: 225 15% 25%; // Dark blue-gray text
 
-    --card: 0 0% 100%;
-    --card-foreground: 37 10% 22%;
+    --card: 210 40% 99%; // Almost white card background
+    --card-foreground: 225 15% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 37 10% 22%;
+    --popover: 210 40% 99%;
+    --popover-foreground: 225 15% 25%;
 
-    --primary: 30 50% 62%;
-    --primary-foreground: 37 40% 15%;
+    --primary: 210 80% 50%; // Bright blue
+    --primary-foreground: 0 0% 100%; // White text on primary
 
-    --secondary: 180 24% 74%;
-    --secondary-foreground: 180 30% 25%;
+    --secondary: 210 40% 80%; // Soft blue
+    --secondary-foreground: 225 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 37 5% 45%;
+    --muted: 210 40% 96%; // Very light blue-gray
+    --muted-foreground: 225 10% 40%;
 
-    --accent: 30 30% 90%;
-    --accent-foreground: 37 40% 15%;
+    --accent: 210 50% 90%; // Pale blue
+    --accent-foreground: 225 15% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 37 10% 85%;
-    --input: 37 10% 85%;
-    --ring: 30 50% 62%;
+    --border: 210 30% 85%; // Light blue border
+    --input: 210 30% 85%;
+    --ring: 210 80% 50%;
 
     --radius: 0.5rem;
   }
@@ -42,7 +43,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Gentium Basic', serif;
   }
 }
 
