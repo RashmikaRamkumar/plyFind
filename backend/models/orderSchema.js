@@ -40,6 +40,11 @@ const orderSchema = new mongoose.Schema({
         enum: ['pending', 'completed', 'failed'],
         default: 'pending'
     },
+    paymentType: {
+        type: String,
+        enum: ['COD', 'UPI'],
+        required: true
+    },      
     createdAt: {
         type: Date,
         default: Date.now
