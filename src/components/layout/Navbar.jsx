@@ -66,7 +66,7 @@ const Navbar = () => {
               <Link to="/enquiry" className="text-foreground hover:text-wood-dark font-medium transition-colors" onClick={toggleMenu}>Enquiry</Link>
               <Link to="/contact" className="text-foreground hover:text-wood-dark font-medium transition-colors" onClick={toggleMenu}>Contact</Link>
               <Link 
-                to="/admin/login" 
+                to="/admin" 
                 className="flex items-center gap-2 px-4 py-2 bg-white border border-wood-dark rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-200 w-fit"
                 onClick={toggleMenu}
               >

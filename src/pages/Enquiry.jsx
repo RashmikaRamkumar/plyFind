@@ -42,7 +42,7 @@ const Enquiry = () =>
 
     try {
       // Step 4: Send data to backend (adjust the URL accordingly)
-      const response = await fetch('http://localhost:5000/api/enquiry', {
+      const response = await fetch('https://plyfind.onrender.com/api/enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
