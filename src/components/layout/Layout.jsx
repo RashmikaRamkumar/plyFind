@@ -1,17 +1,24 @@
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar"; 
 
-import Navbar from './Navbar';
-import Footer from './Footer';
-import WhatsAppButton from '../ui/WhatsAppButton';
-
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        {children}
+    <div>
+      <header>
+        
+        <Navbar />
+      </header>
+      <main>
+       
+        <Outlet />
       </main>
-      <WhatsAppButton />
-      <Footer />
+      <footer>
+        {/* Add your footer content here */}
+        <div className="bg-wood-dark text-white py-4 text-center">
+          <p>&copy; 2025 Rakesh Glass & Plywood. All rights reserved.</p>
+          </div>
+      </footer>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Home = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/placeholder.svg" 
+                src="/images/about/home.png" 
                 alt="Rakesh Glass and Plywood store" 
                 className="rounded-lg shadow-lg w-full h-auto object-cover"
               />
@@ -95,7 +95,7 @@ const Home = () => {
             <div className="card-custom overflow-hidden group">
               <div className="relative overflow-hidden mb-4">
                 <img 
-                  src="/placeholder.svg" 
+                  src="images\products\BWR.jpg" 
                   alt="BWR Plywood" 
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -113,7 +113,7 @@ const Home = () => {
             <div className="card-custom overflow-hidden group">
               <div className="relative overflow-hidden mb-4">
                 <img 
-                  src="/placeholder.svg" 
+                  src="/images/products/ToughenedGlass.png" 
                   alt="Toughened Glass" 
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -131,7 +131,7 @@ const Home = () => {
             <div className="card-custom overflow-hidden group">
               <div className="relative overflow-hidden mb-4">
                 <img 
-                  src="/placeholder.svg" 
+                  src="/images/products/Laminates.jpg" 
                   alt="Laminates" 
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />

@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserShield } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +30,13 @@ const Navbar = () => {
             <Link to="/products" className="text-foreground hover:text-wood-dark font-medium transition-colors">Products</Link>
             <Link to="/enquiry" className="text-foreground hover:text-wood-dark font-medium transition-colors">Enquiry</Link>
             <Link to="/contact" className="text-foreground hover:text-wood-dark font-medium transition-colors">Contact</Link>
+            <Link 
+              to="/admin" 
+              className="flex items-center gap-2 px-4 py-2 bg-white border border-wood-dark rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-200"
+            >
+              <FaUserShield className="text-wood-dark" />
+              <span className="text-wood-dark font-medium">Admin Login</span>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -58,6 +65,14 @@ const Navbar = () => {
               <Link to="/products" className="text-foreground hover:text-wood-dark font-medium transition-colors" onClick={toggleMenu}>Products</Link>
               <Link to="/enquiry" className="text-foreground hover:text-wood-dark font-medium transition-colors" onClick={toggleMenu}>Enquiry</Link>
               <Link to="/contact" className="text-foreground hover:text-wood-dark font-medium transition-colors" onClick={toggleMenu}>Contact</Link>
+              <Link 
+                to="/admin/login" 
+                className="flex items-center gap-2 px-4 py-2 bg-white border border-wood-dark rounded-lg shadow-md hover:bg-gray-50 transition-colors duration-200 w-fit"
+                onClick={toggleMenu}
+              >
+                <FaUserShield className="text-wood-dark" />
+                <span className="text-wood-dark font-medium">Admin Login</span>
+              </Link>
             </div>
           </div>
         )}

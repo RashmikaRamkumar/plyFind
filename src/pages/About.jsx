@@ -17,11 +17,13 @@ const About = () => {
         <div className="container-custom">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
-              <img 
-                src="/placeholder.svg" 
-                alt="Rakesh Glass and Plywood Store" 
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
+            <img 
+            src="/images/about/aboutUs.jpg" 
+            alt="Rakesh Gla
+            ss and Plywood Store" 
+            className="rounded-lg shadow-lg w-full h-auto"
+          />
+
             </div>
             <div className="md:w-1/2">
               <h2 className="heading-lg mb-6">Our Story</h2>

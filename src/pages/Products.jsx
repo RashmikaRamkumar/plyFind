@@ -16,98 +16,98 @@ const Products = () => {
       name: 'BWR Plywood',
       category: 'plywood',
       description: 'Boiling Water Resistant plywood ideal for kitchens, bathrooms, and areas exposed to moisture.',
-      image: '/placeholder.svg'
+      image: '/images/products/BWR.jpg'
     },
     {
       id: 2,
       name: 'MR Grade Plywood',
       category: 'plywood',
       description: 'Moisture Resistant plywood suitable for general interior applications.',
-      image: '/placeholder.svg'
+      image: '/images/products/MR.webp'
     },
     {
       id: 3,
       name: 'Marine Plywood',
       category: 'plywood',
       description: 'High-grade waterproof plywood for extreme moisture conditions and exterior applications.',
-      image: '/placeholder.svg'
+      image: '/images/products/marine.jpg'
     },
     {
       id: 4,
       name: 'MDF Boards',
       category: 'plywood',
       description: 'Medium Density Fiberboard with smooth surface, perfect for furniture and cabinetry.',
-      image: '/placeholder.svg'
+      image: '/images/products/MDF.webp'
     },
     {
       id: 5,
       name: 'Particle Boards',
       category: 'plywood',
       description: 'Engineered wood product manufactured from wood chips, perfect for cost-effective solutions.',
-      image: '/placeholder.svg'
+      image: '/images/products/particleboard.jpg'
     },
     {
       id: 6,
       name: 'Toughened Glass',
       category: 'glass',
       description: 'Heat-treated safety glass with increased strength and thermal resistance.',
-      image: '/placeholder.svg'
+      image: '/images/products/ToughenedGlass.png'
     },
     {
       id: 7,
       name: 'Frosted Glass',
       category: 'glass',
       description: 'Translucent glass with a matte appearance, providing privacy while allowing light transmission.',
-      image: '/placeholder.svg'
+      image: '/images/products/frost.jpg'
     },
     {
       id: 8,
       name: 'Decorative Glass',
       category: 'glass',
       description: 'Patterned and textured glass options that add aesthetic appeal to doors, windows, and partitions.',
-      image: '/placeholder.svg'
+      image: 'images/products/Decorate.jpeg'
     },
     {
       id: 9,
       name: 'Clear Float Glass',
       category: 'glass',
       description: 'Standard transparent glass for windows, shelves, and table tops.',
-      image: '/placeholder.svg'
+      image: 'images/products/Clear.webp'
     },
     {
       id: 10,
       name: 'Mirror Glass',
       category: 'glass',
       description: 'High-quality reflective glass in various thicknesses for decorative and functional use.',
-      image: '/placeholder.svg'
+      image: '/images/products/Mirror.jpg'
     },
     {
       id: 11,
       name: 'Laminates',
       category: 'other',
       description: 'Decorative surface materials in various designs and textures for furniture finishing.',
-      image: '/placeholder.svg'
+      image: '/images/products/Laminates.jpg'
     },
     {
       id: 12,
       name: 'Veneers',
       category: 'other',
       description: 'Thin slices of natural wood for premium furniture and interior surfaces.',
-      image: '/placeholder.svg'
+      image: '/images/products/veneers.webp'
     },
     {
       id: 13,
       name: 'Edge Bands',
       category: 'other',
       description: 'Finishing material for covering exposed edges of plywood and boards.',
-      image: '/placeholder.svg'
+      image: '/images/products/Edge.jpg'
     },
     {
       id: 14,
       name: 'Hardware Accessories',
       category: 'other',
       description: 'Various fittings, handles, and functional accessories for furniture and cabinets.',
-      image: '/placeholder.svg'
+      image: '/images/products/Hardware.jpg'
     }
   ];
 
@@ -157,11 +157,16 @@ const Products = () => {
             {filteredProducts.map(product => (
               <div key={product.id} className="card-custom group overflow-hidden">
                 <div className="relative overflow-hidden mb-4">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+                <img 
+                 src={product.image} 
+                 alt={product.name} 
+                 className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                 onError={(e) => {
+                   console.error(`Failed to load image for ${product.name}`);
+                   e.target.onerror = null;
+                   e.target.src = '/images/placeholder.jpg';
+                 }}
+/               >
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
                 <p className="text-muted-foreground mb-4">{product.description}</p>

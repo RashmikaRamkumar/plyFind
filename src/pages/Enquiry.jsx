@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
 
-const Enquiry = () => {
+const Enquiry = () => 
+{
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,6 +12,7 @@ const Enquiry = () => {
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,20 +22,51 @@ const Enquiry = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // In a real application, you would send this data to a backend server
+    const { name, phone, email, subject, message } = formData;
+    
+    if (!name || !phone || !email || !subject || !message) {
+      setStatusMessage('All fields are required.');
+      return;
+    }
+    
+    // Prepare the data to be sent
+    const enquiryData = {
+      fullName: name,
+      phoneNumber: phone,
+      email: email,
+      message,
+      subject, // You can change this or add more fields as needed
+    };
+
+    try {
+      // Step 4: Send data to backend (adjust the URL accordingly)
+      const response = await fetch('http://localhost:5000/api/enquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(enquiryData),
+      });
+
+      if (response.ok) {
+        setStatusMessage('Your message has been sent successfully!');
+        setFormData({ name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''}); // Reset form
+      } else {
+        setStatusMessage('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatusMessage('An error occurred. Please try again.');
+    }
     setFormSubmitted(true);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
   };
+    
 
   return (
     <>

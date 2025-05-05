@@ -1,5 +1,65 @@
+import { useState } from 'react';
 
 const Contact = () => {
+  // Step 1: State for form inputs
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    message: '',
+  });
+  
+  const [statusMessage, setStatusMessage] = useState('');
+
+  // Step 2: Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // Step 3: Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const { name, phone, message } = formData;
+    
+    if (!name || !phone || !message) {
+      setStatusMessage('All fields are required.');
+      return;
+    }
+    
+    // Prepare the data to be sent
+    const contactData = {
+      fullName: name,
+      phoneNumber: phone,
+      message,
+      subject: 'Contact Form Inquiry', // You can change this or add more fields as needed
+    };
+
+    try {
+      // Step 4: Send data to backend (adjust the URL accordingly)
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactData),
+      });
+
+      if (response.ok) {
+        setStatusMessage('Your message has been sent successfully!');
+        setFormData({ name: '', phone: '', message: '' }); // Reset form
+      } else {
+        setStatusMessage('Something went wrong. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatusMessage('An error occurred. Please try again.');
+    }
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -120,6 +180,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      
 
       {/* Quick Contact Form */}
       <section className="section-padding bg-accent">
@@ -127,7 +188,7 @@ const Contact = () => {
           <div className="max-w-2xl mx-auto">
             <h2 className="heading-lg text-center mb-8">Send Us a Message</h2>
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
@@ -135,6 +196,8 @@ const Contact = () => {
                       type="text"
                       id="name"
                       name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-wood focus:border-wood"
                       placeholder="John Doe"
                     />
@@ -145,6 +208,8 @@ const Contact = () => {
                       type="tel"
                       id="phone"
                       name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-wood focus:border-wood"
                       placeholder="+91 98765 43210"
                     />
@@ -156,6 +221,8 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     rows="4"
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-wood focus:border-wood"
                     placeholder="How can we help you?"
@@ -168,37 +235,8 @@ const Contact = () => {
                   </button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="heading-lg text-center mb-8">Frequently Asked Questions</h2>
-            
-            <div className="space-y-4">
-              <div className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">Do you deliver materials to customer locations?</h3>
-                <p>Yes, we offer delivery services within Kangeyam and surrounding areas. Delivery charges may apply based on distance and order volume.</p>
-              </div>
-              
-              <div className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">Can you cut plywood and glass to custom sizes?</h3>
-                <p>Absolutely! We provide cutting services for both plywood and glass according to your specifications.</p>
-              </div>
-              
-              <div className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">Do you accept bulk orders for commercial projects?</h3>
-                <p>Yes, we welcome bulk orders for commercial projects and offer competitive pricing for volume purchases.</p>
-              </div>
-              
-              <div className="border border-gray-200 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">What payment methods do you accept?</h3>
-                <p>We accept cash, credit/debit cards, UPI payments, and bank transfers for your convenience.</p>
-              </div>
+              {/* Step 5: Status message */}
+              {statusMessage && <p className="mt-4 text-center">{statusMessage}</p>}
             </div>
           </div>
         </div>
