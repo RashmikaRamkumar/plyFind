@@ -23,19 +23,21 @@ const productSchema = new mongoose.Schema({
             required: true
         }
     }],
-    height: {
-        type: Number,
-        required: true
-    },
-    width: {
-        type: Number,
-        required: true
-    },
-    depth: {
-        type: Number,
-        required: true
-    },
-    price: {
+    dimensions:[ {
+        height: {
+            type: Number,
+            required: true
+        },
+        width: {
+            type: Number,
+            required: true
+        },
+        depth: {
+            type: Number,
+            required: true
+        }
+    }],
+    costPerUnitVolume: { 
         type: Number,
         required: true
     }
