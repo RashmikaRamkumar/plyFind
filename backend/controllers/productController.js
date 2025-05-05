@@ -23,10 +23,13 @@ const addProduct = async (req, res) => {
     }
 };
 
-// PUT /api/products/:id
 const updateProduct = async (req, res) => {
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedProduct = await Product.findOneAndUpdate(
+            { productId: req.params.id },  // use productId instead of _id
+            req.body,
+            { new: true }
+        );
         if (!updatedProduct) return res.status(404).json({ error: 'Product not found' });
         res.status(200).json(updatedProduct);
     } catch (error) {
@@ -34,10 +37,11 @@ const updateProduct = async (req, res) => {
     }
 };
 
-// DELETE /api/products/:id
+
+// DELETE /api/products/:productId
 const deleteProduct = async (req, res) => {
     try {
-        const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+        const deletedProduct = await Product.findOneAndDelete({ productId: req.params.id });
         if (!deletedProduct) return res.status(404).json({ error: 'Product not found' });
         res.status(200).json({ message: 'Product deleted successfully' });
     } catch (error) {

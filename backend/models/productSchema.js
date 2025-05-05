@@ -41,10 +41,11 @@ const productSchema = new mongoose.Schema({
     }
 });
 
-// Pre-save middleware to generate productId like "PRD001", "PRD002", etc.
+const Counter = require('./Counter');
+
 productSchema.pre('save', async function(next) {
     if (!this.productId) {
-        const counter = await mongoose.model('Counter').findOneAndUpdate(
+        const counter = await Counter.findOneAndUpdate(
             { name: 'productId' },
             { $inc: { seq: 1 } },
             { new: true, upsert: true }
@@ -53,5 +54,6 @@ productSchema.pre('save', async function(next) {
     }
     next();
 });
+
 
 module.exports = mongoose.model('Product', productSchema);
