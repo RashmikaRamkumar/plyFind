@@ -13,20 +13,20 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchEnquiries = () => {
-    fetch('https://plyfind.onrender.com/api/admin/enquiries')
+    fetch('http://localhost:5000/api/admin/enquiries')
       .then(res => res.json())
       .then(data => setEnquiries(data));
   };
 
   const fetchContacts = () => {
-    fetch('https://plyfind.onrender.com/api/admin/contacts')
+    fetch('http://localhost:5000/api/admin/contacts')
       .then(res => res.json())
       .then(data => setContacts(data));
   };
 
   const updateEnquiryStatus = async (id, status) => {
     try {
-      const response = await fetch(`https://plyfind.onrender.com/api/admin/enquiries/${id}/status`, {
+      const response = await fetch(`http://localhost:5000/api/admin/enquiries/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
