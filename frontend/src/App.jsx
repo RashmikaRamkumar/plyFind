@@ -9,7 +9,8 @@ import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import WhatsAppButton from './components/WhatsAppButton';
-
+import Product from "./pages/products/Product";
+import Cart from "./pages/Cart";
 const App = () => (
   <BrowserRouter>
     <>
@@ -18,12 +19,14 @@ const App = () => (
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="products" element={<Products />} />
+          <Route path="product" element={<Products />} />
           <Route path="enquiry" element={<Enquiry />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/admin/contact" element={<Contact />} />
           <Route path="/admin/enquiry" element={<Enquiry />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/cart" element={<Cart/>}/>
         </Route>
 
         {/* Admin routes */}
