@@ -16,10 +16,11 @@ A full-stack web application designed for Rakesh Glass & Plywoods to showcase a 
 
 ## 📁 Project Structure
 
+
 ```
 plyFind/
 │
-├── plyFind
+├── plyFindWebsite
 ├       ├──frontend/            # React.js app
 ├       ├── node-backend/       # Node.js + Express API 
 ├       ├──python-backend/      # Python FastAPI chatbot
