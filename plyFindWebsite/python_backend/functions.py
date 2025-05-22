@@ -8,8 +8,8 @@ import base64
 import os
 import io
 import tempfile
-import soundfile as sf
-import sounddevice as sd
+# import soundfile as sf
+# import sounddevice as sd
 
 # Create a FastAPI router for your endpoints
 router = APIRouter()
