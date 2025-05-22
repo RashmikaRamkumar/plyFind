@@ -31,39 +31,86 @@ export const ChatbotInterface = () => {
   const [isSpeak, setIsSpeak] = useState(false);
   const [localInput, setLocalInput] = useState("");
 
-  const startEnglishListening = () => {
-    SpeechRecognition.stopListening(); // Stop any ongoing listening
-    resetTranscript(); // Reset the transcript
-    setInputBox(""); // Clear inputBox
-    setInput(""); // Clear input
-    setLocalInput(""); // Clear localInput
+  // const startEnglishListening = () => {
+  //   SpeechRecognition.stopListening(); // Stop any ongoing listening
+  //   resetTranscript(); // Reset the transcript
+  //   setInputBox(""); // Clear inputBox
+  //   setInput(""); // Clear input
+  //   setLocalInput(""); // Clear localInput
 
-    setListening(true);
-    setIsTamil(false);
-    setListeningLanguage("en-US");
-    SpeechRecognition.startListening({ continuous: true, language: "en-US" });
-    const validateUrl = `${import.meta.env.VITE_BACKEND_URL}/voice`;
-    console.log(`Validate URL for English: ${validateUrl}`);
-    resetInactivityTimer();
+  //   setListening(true);
+  //   setIsTamil(false);
+  //   setListeningLanguage("en-US");
+  //   SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+  //   const validateUrl = `${import.meta.env.VITE_BACKEND_URL}/voice`;
+  //   console.log(`Validate URL for English: ${validateUrl}`);
+  //   resetInactivityTimer();
+  // };
+
+  // const startTamilListening = () => {
+  //   SpeechRecognition.stopListening(); // Stop any ongoing listening
+  //   resetTranscript(); // Reset the transcript
+  //   setInputBox(""); // Clear inputBox
+  //   setInput(""); // Clear input
+  //   setLocalInput(""); // Clear localInput
+
+  //   setTamilListening(true);
+  //   setIsTamil(true);
+  //   setIsSpeak(true);
+  //   setListeningLanguage("ta-IN");
+  //   SpeechRecognition.startListening({ continuous: true, language: "ta-IN" });
+  //   const validateUrlTamil = `${import.meta.env.VITE_BACKEND_URL}/tamil-voice`;
+  //   console.log(`Validate URL for Tamil: ${validateUrlTamil}`);
+  //   resetInactivityTimer();
+  // };
+
+
+  const startEnglishListening = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log("✅ Microphone permission granted");
+  
+      SpeechRecognition.stopListening();
+      resetTranscript();
+      setInputBox("");
+      setInput("");
+      setLocalInput("");
+  
+      setListening(true);
+      setIsTamil(false);
+      setListeningLanguage("en-US");
+      SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+  
+      resetInactivityTimer();
+    } catch (error) {
+      console.error("❌ Microphone access denied or not available:", error);
+      alert("Microphone access is required for voice input. Please allow access in your browser.");
+    }
   };
-
-  const startTamilListening = () => {
-    SpeechRecognition.stopListening(); // Stop any ongoing listening
-    resetTranscript(); // Reset the transcript
-    setInputBox(""); // Clear inputBox
-    setInput(""); // Clear input
-    setLocalInput(""); // Clear localInput
-
-    setTamilListening(true);
-    setIsTamil(true);
-    setIsSpeak(true);
-    setListeningLanguage("ta-IN");
-    SpeechRecognition.startListening({ continuous: true, language: "ta-IN" });
-    const validateUrlTamil = `${import.meta.env.VITE_BACKEND_URL}/tamil-voice`;
-    console.log(`Validate URL for Tamil: ${validateUrlTamil}`);
-    resetInactivityTimer();
+  const startTamilListening = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log("✅ Microphone permission granted");
+  
+      SpeechRecognition.stopListening();
+      resetTranscript();
+      setInputBox("");
+      setInput("");
+      setLocalInput("");
+  
+      setTamilListening(true);
+      setIsTamil(true);
+      setIsSpeak(true);
+      setListeningLanguage("ta-IN");
+      SpeechRecognition.startListening({ continuous: true, language: "ta-IN" });
+  
+      resetInactivityTimer();
+    } catch (error) {
+      console.error("❌ Microphone access denied or not available:", error);
+      alert("Microphone access is required for voice input. Please allow access in your browser.");
+    }
   };
-
+    
   const resetInactivityTimer = () => {
     if (timeoutId) {
       clearTimeout(timeoutId);
