@@ -8,6 +8,7 @@ import {
 import { Calculator, Save, Share2, Printer, ExternalLink } from "lucide-react";
 import htmlToImage from "html-to-image";
 import React, { useRef } from "react";
+const estimateRef = useRef<HTMLDivElement>(null);
 
 interface PriceEstimateProps {
   product: Product | null;
@@ -35,7 +36,6 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
       </div>
     );
   }
-  const estimateRef = useRef<HTMLDivElement>(null);
 
   const price = calculatePrice(product, dimensions, quantity);
   const isCustomQuote = product.isCustomQuote;
