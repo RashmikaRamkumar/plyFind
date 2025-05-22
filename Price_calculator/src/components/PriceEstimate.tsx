@@ -55,9 +55,9 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
       basePrice: formatPrice(product.basePrice),
       unit: product.unit,
       quantity: quantity,
-      subtotal: formatPrice(calculatePrice(product, dimensions, quantity)),
-      gst: formatPrice(calculatePrice(product, dimensions, quantity) * 0.18),
-      total: formatPrice(calculatePrice(product, dimensions, quantity) * 1.18),
+      subtotal: formatPrice(price),
+      gst: formatPrice(price * 0.18),
+      total: formatPrice(price * 1.18),
       notes: product.notes || "N/A",
       date: new Date().toLocaleDateString(),
     };
@@ -105,15 +105,15 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
                 </div>
               )}
 
-            <div className="flex justify-between">
-              <span className="text-gray-600">Base Price:</span>
+            <div className="flex items-center justify-between py-3 border-b border-dashed border-blue-200">
+              <span className="text-gray-800">Base Price:</span>
               <span className="font-medium text-gray-800">
                 {formatPrice(product.basePrice)} / {product.unit}
               </span>
             </div>
 
-            <div className="flex justify-between">
-              <span className="text-gray-600">Quantity:</span>
+            <div className="flex items-center justify-between py-3 border-b border-dashed border-blue-200">
+              <span className="text-gray-800">Quantity:</span>
               <span className="font-medium text-gray-800">{quantity}</span>
             </div>
 
@@ -141,7 +141,9 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
         ) : (
           <div className="mb-4">
             <div className="flex items-center justify-between py-3 border-b border-dashed border-blue-200">
-              <span className="text-gray-800">Subtotal:</span>
+              <span className="text-gray-800">
+                Subtotal ({quantity} {product.unit}):
+              </span>
               <span className="font-medium text-gray-800">
                 {formatPrice(price)}
               </span>

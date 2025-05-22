@@ -187,6 +187,8 @@ const EstimatorPage: React.FC = () => {
                     onDimensionsChange={handleDimensionsChange}
                     availableThicknesses={selectedProduct.availableThicknesses}
                     calculationType={selectedProduct.calculationType}
+                    quantity={quantity}
+                    onQuantityChange={handleQuantityChange}
                   />
                   <PriceEstimate
                     product={selectedProduct}
