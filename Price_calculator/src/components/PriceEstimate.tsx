@@ -6,6 +6,8 @@ import {
   formatDimensions,
 } from "../utils/calculations";
 import { Calculator, Save, Share2, Printer, ExternalLink } from "lucide-react";
+import htmlToImage from "html-to-image";
+import React, { useRef } from "react";
 
 interface PriceEstimateProps {
   product: Product | null;
@@ -20,7 +22,7 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
 }) => {
   if (!product) {
     return (
-      <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+      <div ref={estimateRef} className="bg-white rounded-lg shadow-md overflow-hidden h-full">    
         <h2 className="bg-blue-800 text-white px-4 py-3 font-semibold">
           Price Estimate
         </h2>
@@ -33,6 +35,7 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
       </div>
     );
   }
+  const estimateRef = useRef<HTMLDivElement>(null);
 
   const price = calculatePrice(product, dimensions, quantity);
   const isCustomQuote = product.isCustomQuote;
@@ -76,7 +79,22 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
-
+  const handleDownloadImage = async () => {
+    if (!estimateRef.current) return;
+  
+    try {
+      const dataUrl = await htmlToImage.toPng(estimateRef.current);
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = `price-estimate-${product.name
+        .toLowerCase()
+        .replace(/\s+/g, "-")}-${new Date().toISOString().split("T")[0]}.png`;
+      link.click();
+    } catch (error) {
+      console.error("Failed to generate image:", error);
+    }
+  };
+  
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
       <h2 className="bg-blue-800 text-white px-4 py-3 font-semibold">
@@ -165,7 +183,7 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
 
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={handleSave}
+            onClick={handleDownloadImage}
             className="flex-1 min-w-[100px] bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-md flex items-center justify-center transition-colors"
           >
             <Save size={16} className="mr-1" />
