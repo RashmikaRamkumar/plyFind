@@ -79,14 +79,14 @@ const Products = () => {
       name: 'Mirror Glass',
       category: 'glass',
       description: 'High-quality reflective glass in various thicknesses for decorative and functional use.',
-      image: '/images/products/Mirror.jpg'
+      image: '/images/products/mirror.jpg'
     },
     {
       id: 11,
       name: 'Laminates',
       category: 'other',
       description: 'Decorative surface materials in various designs and textures for furniture finishing.',
-      image: '/images/products/Laminates.jpg'
+      image: '/images/products/laminates.jpg'
     },
     {
       id: 12,
@@ -107,7 +107,7 @@ const Products = () => {
       name: 'Hardware Accessories',
       category: 'other',
       description: 'Various fittings, handles, and functional accessories for furniture and cabinets.',
-      image: '/images/products/Hardware.jpg'
+      image: '/images/products/hardware.jpg'
     }
   ];
 

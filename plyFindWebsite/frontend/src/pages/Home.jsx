@@ -131,7 +131,7 @@ const Home = () => {
             <div className="card-custom overflow-hidden group">
               <div className="relative overflow-hidden mb-4">
                 <img 
-                  src="/images/products/Laminates.jpg" 
+                  src="/images/products/laminates.jpg" 
                   alt="Laminates" 
                   className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
