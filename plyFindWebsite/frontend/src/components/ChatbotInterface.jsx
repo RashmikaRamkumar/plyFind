@@ -65,32 +65,69 @@ export const ChatbotInterface = () => {
   // };
 
 
-  const startEnglishListening = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      console.log("✅ Microphone permission granted");
+  // const startEnglishListening = async () => {
+  //   try {
+  //     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //     console.log("✅ Microphone permission granted");
   
-      SpeechRecognition.stopListening();
-      resetTranscript();
-      setInputBox("");
-      setInput("");
-      setLocalInput("");
+  //     SpeechRecognition.stopListening();
+  //     resetTranscript();
+  //     setInputBox("");
+  //     setInput("");
+  //     setLocalInput("");
   
-      setListening(true);
-      setIsTamil(false);
-      setListeningLanguage("en-US");
-      SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+  //     setListening(true);
+  //     setIsTamil(false);
+  //     setListeningLanguage("en-US");
+  //     SpeechRecognition.startListening({ continuous: true, language: "en-US" });
   
-      resetInactivityTimer();
-    } catch (error) {
-      console.error("❌ Microphone access denied or not available:", error);
-      alert("Microphone access is required for voice input. Please allow access in your browser.");
-    }
-  };
+  //     resetInactivityTimer();
+  //   } catch (error) {
+  //     console.error("❌ Microphone access denied or not available:", error);
+  //     alert("Microphone access is required for voice input. Please allow access in your browser.");
+  //   }
+  // };
+  // const startTamilListening = async () => {
+  //   try {
+  //     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //     console.log("✅ Microphone permission granted");
+  
+  //     SpeechRecognition.stopListening();
+  //     resetTranscript();
+  //     setInputBox("");
+  //     setInput("");
+  //     setLocalInput("");
+  
+  //     setTamilListening(true);
+  //     setIsTamil(true);
+  //     setIsSpeak(true);
+  //     setListeningLanguage("ta-IN");
+  //     SpeechRecognition.startListening({ continuous: true, language: "ta-IN" });
+  
+  //     resetInactivityTimer();
+  //   } catch (error) {
+  //     console.error("❌ Microphone access denied or not available:", error);
+  //     alert("Microphone access is required for voice input. Please allow access in your browser.");
+  //   }
+  // };
+    
+
+
   const startTamilListening = async () => {
     try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Your browser does not support audio recording.");
+        return;
+      }
+  
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       console.log("✅ Microphone permission granted");
+  
+      const audioTracks = stream.getAudioTracks();
+      if (audioTracks.length === 0) {
+        alert("No audio input detected.");
+        return;
+      }
   
       SpeechRecognition.stopListening();
       resetTranscript();
@@ -102,12 +139,50 @@ export const ChatbotInterface = () => {
       setIsTamil(true);
       setIsSpeak(true);
       setListeningLanguage("ta-IN");
+  
+      console.log("🎙️ Starting Tamil listening...");
       SpeechRecognition.startListening({ continuous: true, language: "ta-IN" });
   
       resetInactivityTimer();
     } catch (error) {
-      console.error("❌ Microphone access denied or not available:", error);
-      alert("Microphone access is required for voice input. Please allow access in your browser.");
+      console.error("❌ Microphone access denied or error:", error);
+      alert("Microphone access is required. Please allow microphone permission.");
+    }
+  };
+  const startEnglishListening = async () => {
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert("Your browser does not support audio recording.");
+        return;
+      }
+  
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log("✅ Microphone permission granted");
+  
+      const audioTracks = stream.getAudioTracks();
+      if (audioTracks.length === 0) {
+        alert("No audio input detected.");
+        return;
+      }
+  
+      SpeechRecognition.stopListening();
+      resetTranscript();
+      setInputBox("");
+      setInput("");
+      setLocalInput("");
+  
+      setListening(true);
+      setIsTamil(false);
+      setListeningLanguage("en-US");
+  
+      // Debug log
+      console.log("🎙️ Starting English listening...");
+      SpeechRecognition.startListening({ continuous: true, language: "en-US" });
+  
+      resetInactivityTimer();
+    } catch (error) {
+      console.error("❌ Microphone access denied or error:", error);
+      alert("Microphone access is required. Please allow microphone permission.");
     }
   };
     
