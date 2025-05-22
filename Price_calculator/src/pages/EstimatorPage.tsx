@@ -87,7 +87,7 @@ const EstimatorPage: React.FC = () => {
   };
 
   const handleBackClick = () => {
-    window.location.href = "http://localhost:8080";
+    window.location.href = "https://ply-find.vercel.app";
   };
 
   return (

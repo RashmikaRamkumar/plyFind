@@ -56,7 +56,7 @@ const Navbar = () => {
               Contact
             </Link>
             <a
-              href="http://localhost:5173"
+              href="https://priceestimator-gamma.vercel.app"
               className="text-foreground hover:text-wood-dark font-medium transition-colors"
             >
               Price Calculator
@@ -143,7 +143,7 @@ const Navbar = () => {
                 Contact
               </Link>
               <a
-                href="http://localhost:5173"
+                href="https://priceestimator-gamma.vercel.app/"
                 className="text-foreground hover:text-wood-dark font-medium transition-colors"
                 onClick={toggleMenu}
               >

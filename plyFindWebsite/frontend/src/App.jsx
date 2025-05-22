@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 import { ChatbotInterface } from './components/ChatbotInterface';
 import axios from 'axios';
 
-axios.defaults.baseURL =  'http://localhost:8000';
+axios.defaults.baseURL =  'https://plyfind-chatbot.onrender.com';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(false);
