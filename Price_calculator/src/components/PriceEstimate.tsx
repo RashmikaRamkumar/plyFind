@@ -96,7 +96,7 @@ const PriceEstimate: React.FC<PriceEstimateProps> = ({
   };
   
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+    <div ref={estimateRef} className="bg-white rounded-lg shadow-md overflow-hidden h-full">  
       <h2 className="bg-blue-800 text-white px-4 py-3 font-semibold">
         Price Estimate
       </h2>
